@@ -78,6 +78,8 @@ def refresh_data():
             '% Critical        : ' + df.apply(lambda x: f"{x.c:.0%}", axis=1) + br +
             '% Deaths       : ' + df.apply(lambda x: f"{x.d:.0%}", axis=1)
     )
+    return df, df_region
+
 
 def generate_geo():
     geo_fig = go.Figure(data=go.Choropleth(
@@ -92,14 +94,15 @@ def generate_geo():
         zmin=0,
         text=text,
         name='',
-        hovertemplate = '%{text}',
+        hovertemplate='%{text}',
     ))
 
     geo_fig.update_layout(
         title_text='World Wide COVID-19 Cases',
+        autosize=True,
         geo=dict(showframe=False,
                  showcoastlines=False,
-                 projection_type='natural earth')
+                 projection_type='equirectangular')
     )
 
     geo_fig.update_geos(
@@ -111,10 +114,11 @@ def generate_geo():
 
     return geo_fig
 
+
 def generate_pie():
-    colors = ['orange','green','red','black']
-    labels = ['% Active','% Recovered','% Critical','% Death']
-    specs = [[{'type':'domain'} for i in range(5)]]
+    colors = ['orange', 'green', 'red', 'black']
+    labels = ['% Active', '% Recovered', '% Critical', '% Death']
+    specs = [[{'type': 'domain'} for i in range(5)]]
     pie_fig = make_subplots(rows=1, cols=5, specs=specs, subplot_titles=df_region['region'])
     val = 0
     row = 1
@@ -123,29 +127,29 @@ def generate_pie():
         pie_fig.add_trace(
             go.Pie(
                 labels=labels,
-                values=[df_region.a[val], df_region.b[val],df_region.c[val],df_region.d[val]] ,
+                values=[df_region.a[val], df_region.b[val], df_region.c[val], df_region.d[val]],
                 name=df_region.region[val],
-                title=f'{df_region.confirmed[val]:,}'+br+'Cases',
+                title=f'{df_region.confirmed[val]:,}' + br + 'Cases',
                 textinfo='none'
             ),
-            row, val+1
+            row, val + 1
         )
 
     pie_fig.update_traces(
         hole=.6,
         hoverinfo="label+percent+name",
-        marker=dict(colors = colors)
+        marker=dict(colors=colors)
     )
     pie_fig.update_layout(
         autosize=True,
         paper_bgcolor="rgba(0,0,0,0)",
-        )
+    )
     return pie_fig
 
 
 def generate_bar():
-    values = ['% Active', '% Recovered', '% Critical','% Death']
-    colors = ['orange','green','red','black']
+    values = ['% Active', '% Recovered', '% Critical', '% Death']
+    colors = ['orange', 'green', 'red', 'black']
     bar_fig = go.Figure()
     for i in range(4):
         fig.add_trace(go.Bar(
@@ -154,11 +158,10 @@ def generate_bar():
             name=values[i],
             orientation='h',
             marker=dict(
-                color = colors[i],
+                color=colors[i],
                 line=dict(color='rgba(255, 255, 255, 1)', width=1)
             )
         ))
-
 
     bar_fig.update_layout(
         barmode='stack',
@@ -167,4 +170,3 @@ def generate_bar():
         plot_bgcolor='rgba(0,0,0,0)'
     )
     return bar_fig
-

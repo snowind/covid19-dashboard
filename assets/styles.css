@@ -1,0 +1,14 @@
+#news-feeds{
+  overflow: auto;
+  height: 500px
+}
+
+img{
+  max-width: 100%
+}
+
+.carousel-caption{
+  background-color: black;
+  width: 100%;
+  padding:0;
+}
