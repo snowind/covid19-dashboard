@@ -89,20 +89,22 @@ def generate_geo():
         colorscale='bupu',
         marker_line_color='darkgrey',
         marker_line_width=1,
-        colorbar_title='Confirmed Cases',
         zmax=df.confirmed.quantile(q=0.95),
         zmin=0,
         text=text,
         name='',
         hovertemplate='%{text}',
+        showscale=False,
     ))
 
     geo_fig.update_layout(
-        title_text='World Wide COVID-19 Cases',
         autosize=True,
+        showlegend=False,
+        margin=dict(t=0, r=0, b=0, l=0, autoexpand=False),
         geo=dict(showframe=False,
                  showcoastlines=False,
-                 projection_type='equirectangular')
+                 projection_type='natural earth'
+                 )
     )
 
     geo_fig.update_geos(
@@ -164,6 +166,7 @@ def generate_bar():
         ))
 
     bar_fig.update_layout(
+        margin=dict(l=0, r=0, t=0, b=0),
         barmode='stack',
         legend_orientation="h",
         paper_bgcolor='rgba(0,0,0,0)',

@@ -34,13 +34,22 @@ interval = \
 def news_cards_generator(news_feed):
     news_cards = \
         [
-            dbc.Card([
-                dbc.CardImg(src=val['img']),
-                dbc.CardHeader(val['title']),
-                dbc.CardBody(val['desc']),
-                html.Em((to_datetime(val['published']) + dt.timedelta(hours=7)).strftime('%A %d %B %Y | %H:%M GMT+7'),
-                        style={'text-align': 'right'})
-            ])
+
+            dbc.Col(dbc.Card([
+                dbc.CardHeader([
+                    html.A(html.H4(val['title']), href=val['url']),
+                    html.H6(['Source : ', val['source_name']]),
+                ]),
+
+                dbc.CardBody(dbc.Row([
+                    dbc.Col(val['desc'], width=9),
+                    dbc.Col(html.Img(src=val['img'], style={'width': '100%'}), width=3)
+                ])),
+                html.Em(
+                    (to_datetime(val['published']) + dt.timedelta(hours=7)).strftime('%A %d %B %Y | %H:%M GMT+7'),
+                    style={'text-align': 'right'})
+            ]))
+
             for val in news_feed]
 
     news_container = html.Div(news_cards, id='news-feeds')
@@ -92,43 +101,26 @@ def news_carousel(news_feed):
 
 
 def update_cards(df):
-    confirmed = f'{df.confirmed.sum():,}'
-    active = f'{df.active.sum():,}'
-    recovered = f'{df.recovered.sum():,}'
-    critical = f'{df.critical.sum():,}'
-    deaths = f'{df.deaths.sum():,}'
-    cards = dbc.CardGroup(
-        [
-            dbc.Card(
-                dbc.CardBody([
-                        html.H1(confirmed, className="card-title"),
-                        html.P("Confirmed", className="card-text", ),
-                    ])
-            ),
-            dbc.Card(
-                dbc.CardBody([
-                    html.H1(active, className="card-title"),
-                    html.P("Active", className="card-text", ),
-                ])
-            ),
-            dbc.Card(
-                dbc.CardBody([
-                    html.H1(recovered, className="card-title"),
-                    html.P("Recovered", className="card-text", ),
-                ])
-            ),
-            dbc.Card(
-                dbc.CardBody([
-                    html.H1(critical, className="card-title"),
-                    html.P("Critical", className="card-text", ),
-                ])
-            ),
-            dbc.Card(
-                dbc.CardBody([
-                    html.H1(deaths, className="card-title"),
-                    html.P("Deaths", className="card-text", ),
-                ])
-            ),
-        ]
-    )
+    confirmed = f'{int(round(df.confirmed.sum() / 1)):,}'
+    active = f'{int(round(df.active.sum() / 1)):,}'
+    recovered = f'{int(round(df.recovered.sum() / 1)):,}'
+    critical = f'{int(round(df.critical.sum() / 1)):,}'
+    deaths = f'{int(round(df.deaths.sum() / 1)):,}'
+    metric = (active, recovered, critical, deaths)
+    label = ('Active', 'Recovered', 'Critical', 'Deaths')
+    cards = \
+        html.Div([
+            html.H2(['Worldwide COVID-19 Cases : ',confirmed]),
+            dbc.CardDeck(
+                [
+                    dbc.Card(
+                        html.Div([
+                            html.P(lab, className='metric_text'),
+                            html.H4(met, className='metric_text'),
+                        ], className='metric_body'
+                        ), className='card border-0'
+                    ) for met, lab in zip(metric, label)
+                ], id='metric'
+            )
+        ])
     return cards
