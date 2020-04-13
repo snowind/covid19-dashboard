@@ -101,7 +101,7 @@ def generate_geo():
     geo_fig.update_layout(
         autosize=True,
         hoverlabel=dict(
-            font_size=18,
+            font_size=13,
         ),
         showlegend=False,
         margin=dict(t=0, r=0, b=0, l=0, autoexpand=True),

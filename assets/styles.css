@@ -69,6 +69,10 @@ img {
   padding-left: 0.3em;
 }
 
+.card-body{
+  padding: 0.8em;
+}
+
 #news_search{
   padding:1em;
   margin-right: 0.3em;

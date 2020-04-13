@@ -26,9 +26,10 @@ def news_cards_generator(news_feed):
             dbc.Col(dbc.Card([
                 dbc.CardBody(dbc.Row([
                     dbc.Col([
-                        html.A(html.H4(val['title']), href=val['url']),
-                        html.H6(['Source : ', val['source_name']]),
-                        html.P(['Published at : ', to_datetime(val['published']).strftime('%A %d %B %Y | %H:%M GMT+7')])
+                        html.A(html.H5(val['title']), href=val['url']),
+                        html.P(['Source : ', val['source_name']], style={'margin': '0.1em'}),
+                        html.P(['Published at : ', to_datetime(val['published']).strftime('%A %d %B %Y | %H:%M GMT+7')],
+                               style={'margin': '0.1em'})
                     ], width=9),
                     dbc.Col(html.Img(src=val['img'], style={'width': '100%'}), width=3)
                 ])),
@@ -36,9 +37,7 @@ def news_cards_generator(news_feed):
             ]), className='news-cards')
 
             for val in news_feed]
-
-    news_container = html.Div(news_cards, id='news-feeds')
-    return news_container
+    return news_cards
 
 
 # def news_carousel(news_feed):
