@@ -13,7 +13,6 @@ br = '<br>'
 
 
 def refresh_data():
-    global df, df_region, df_subregion, table, table_num, table_per, text
     response = requests.request("GET", url, headers=headers)
     region = pd.read_csv('mapping.csv')
     region.columns = ['country', 'id', 'region', 'sub-region']
@@ -26,21 +25,21 @@ def refresh_data():
     df_region = df.groupby(by=['region'], as_index=False).sum()
     df_subregion = df.groupby(by=['region', 'sub-region'], as_index=False).sum()
 
-    def add_columns(df):
-        df['active'] = df.confirmed - df.recovered - df.critical - df.deaths
-        df['a'] = round(df.active / df.confirmed, 2)
-        df['b'] = round(df.recovered / df.confirmed, 2)
-        df['c'] = round(df.critical / df.confirmed, 2)
-        df['d'] = round(df.deaths / df.confirmed, 2)
-        return df
+    def add_columns(a):
+        a['active'] = a.confirmed - a.recovered - a.critical - a.deaths
+        a['a'] = round(a.active / a.confirmed, 2)
+        a['b'] = round(a.recovered / a.confirmed, 2)
+        a['c'] = round(a.critical / a.confirmed, 2)
+        a['d'] = round(a.deaths / a.confirmed, 2)
+        return a
 
-    def add_columns_region(df):
-        df['active'] = df.confirmed - df.recovered - df.critical - df.deaths
-        df['a'] = round(df.active / df.confirmed, 3) * 100
-        df['b'] = round(df.recovered / df.confirmed, 3) * 100
-        df['c'] = round(df.critical / df.confirmed, 3) * 100
-        df['d'] = round(df.deaths / df.confirmed, 3) * 100
-        return df
+    def add_columns_region(a):
+        a['active'] = a.confirmed - a.recovered - a.critical - a.deaths
+        a['a'] = round(a.active / a.confirmed, 2) * 100
+        a['b'] = round(a.recovered / a.confirmed, 2) * 100
+        a['c'] = round(a.critical / a.confirmed, 2) * 100
+        a['d'] = round(a.deaths / a.confirmed, 2) * 100
+        return a
 
     def table_format_percentage(column):
         column = column.astype(int).astype(str) + ' %'
@@ -49,22 +48,22 @@ def refresh_data():
         table[column] = table.apply(lambda x: f'{x[column]:,}', axis=1)
 
     df = add_columns(df)
-    df_region = add_columns_region(df_region)
-    df_subregion = add_columns_region(df_subregion)
+    # df_region = add_columns_region(df_region)
+    # df_subregion = add_columns_region(df_subregion)
     table = df_subregion.copy()
-    table.columns = ['Region', 'Sub-Region', 'Confirmed', 'Recovered', 'Critical', 'Deaths',
-                     'Active', '% Active', '% Recovered', '% Critical', '% Death']
+    table.columns = [
+        'Region', 'Sub-Region', 'Confirmed', 'Recovered', 'Critical', 'Deaths', 'Active',
+        # '% Active', '% Recovered', '% Critical', '% Death'
+    ]
     table_format_separator('Confirmed')
     table_format_separator('Recovered')
     table_format_separator('Critical')
     table_format_separator('Deaths')
     table_format_separator('Active')
-    table_format_percentage(table['% Active'])
-    table_format_percentage(table['% Recovered'])
-    table_format_percentage(table['% Critical'])
-    table_format_percentage(table['% Death'])
-    table_num = table[['Region', 'Sub-Region', 'Confirmed', 'Active', 'Recovered', 'Critical', 'Deaths']]
-    table_per = table[['Region', 'Sub-Region', '% Active', '% Recovered', '% Critical', '% Death']]
+    # table['% Active'] = table['% Active'].astype(int).astype(str) + ' %'
+    # table['% Recovered'] = table['% Recovered'].astype(int).astype(str) + ' %'
+    # table['% Critical'] = table['% Critical'].astype(int).astype(str) + ' %'
+    # table['% Death'] = table['% Death'].astype(int).astype(str) + ' %'
 
     text = (
             df['country'] + br + br +
@@ -78,16 +77,17 @@ def refresh_data():
             '% Critical        : ' + df.apply(lambda x: f"{x.c:.0%}", axis=1) + br +
             '% Deaths       : ' + df.apply(lambda x: f"{x.d:.0%}", axis=1)
     )
-    return df, df_region
+    return df, df_region, table, text
 
 
 def generate_geo():
+    df, df_region, table, text = refresh_data()
     geo_fig = go.Figure(data=go.Choropleth(
         locationmode='country names',
         locations=df['country'],
         z=df['confirmed'],
         colorscale='bupu',
-        marker_line_color='darkgrey',
+        marker_line_color='black',
         marker_line_width=1,
         zmax=df.confirmed.quantile(q=0.95),
         zmin=0,
@@ -99,39 +99,42 @@ def generate_geo():
 
     geo_fig.update_layout(
         autosize=True,
+        hoverlabel=dict(
+            font_size=18,
+        ),
         showlegend=False,
-        margin=dict(t=0, r=0, b=0, l=0, autoexpand=False),
+        margin=dict(t=0, r=0, b=0, l=0, autoexpand=True),
+        paper_bgcolor="rgba(0,0,0,0)",
         geo=dict(showframe=False,
                  showcoastlines=False,
-                 projection_type='natural earth'
-                 )
+                 projection_type='natural earth',
+                 bgcolor='rgba(0,0,0,0)',
+                 ),
     )
 
     geo_fig.update_geos(
+        visible=False,
         lataxis_showgrid=False,
         lonaxis_showgrid=False,
-        showocean=True,
-        oceancolor="rgba(114, 0, 230,0)",
+        showocean=False,
     )
 
     return geo_fig
 
 
-def generate_pie():
-    colors = ['orange', 'green', 'red', 'black']
+def generate_pie(df_region):
+    colors = ['orange', 'green', 'red', 'purple']
     labels = ['% Active', '% Recovered', '% Critical', '% Death']
     specs = [[{'type': 'domain'} for i in range(5)]]
     pie_fig = make_subplots(rows=1, cols=5, specs=specs, subplot_titles=df_region['region'])
-    val = 0
     row = 1
-    col = 1
     for val in range(5):
         pie_fig.add_trace(
             go.Pie(
                 labels=labels,
                 values=[df_region.a[val], df_region.b[val], df_region.c[val], df_region.d[val]],
                 name=df_region.region[val],
-                title=f'{df_region.confirmed[val]:,}' + br + 'Cases',
+                title=f'{df_region.confirmed[val]:,}' + br + 'Confirm Cases',
                 textinfo='none'
             ),
             row, val + 1
@@ -143,8 +146,12 @@ def generate_pie():
         marker=dict(colors=colors)
     )
     pie_fig.update_layout(
+        title={'font': {'size': 14}},
         autosize=True,
+        showlegend=False,
         paper_bgcolor="rgba(0,0,0,0)",
+        font=dict(color='white'),
+        margin=dict(l=0, r=0, t=40, b=0),
     )
     return pie_fig
 

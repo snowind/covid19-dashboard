@@ -15,20 +15,13 @@ newsapi = NewsApiClient(api_key='22b35c71e16d41e5856cd1c78f7e132f')
 
 def refresh_news(query, source):
     sources = newsapi.get_sources()
-    news_provider = [
-        'google-news', 'cnn', 'abc-news', 'fox-news', 'nbc-news',
-        'the-washington-post', 'bbc-news', 'abc-news'
-    ]
     source_df = pd.DataFrame(data=sources['sources'])
-    source_df = source_df[['id', 'name']]
-    source_df = source_df[source_df['id'].isin(news_provider)]
-    source_df = source_df.reset_index(drop=True)
+    source_df.columns = ['source_id', 'name', 'description', 'homepage', 'category', 'language', 'country']
     top_headlines = newsapi.get_top_headlines(
         q=query,
         sources=source,
     )
     news_data = []
-
     for news in top_headlines['articles']:
         data = {
             'source_id': news['source']['id'],
@@ -40,7 +33,11 @@ def refresh_news(query, source):
             'published': news['publishedAt']
         }
         news_data.append(data)
-    return news_data
+    news_df = pd.DataFrame(news_data)
+    news_df = pd.merge(news_df,source_df,on='source_id')
+    news_df.sort_values(by='published', ascending=False)
+    news_json = news_df.to_dict(orient='records')
+    return news_json
 
 
 def refresh_tweets():

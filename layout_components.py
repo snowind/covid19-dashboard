@@ -36,19 +36,16 @@ def news_cards_generator(news_feed):
         [
 
             dbc.Col(dbc.Card([
-                dbc.CardHeader([
-                    html.A(html.H4(val['title']), href=val['url']),
-                    html.H6(['Source : ', val['source_name']]),
-                ]),
-
                 dbc.CardBody(dbc.Row([
-                    dbc.Col(val['desc'], width=9),
+                    dbc.Col([
+                        html.A(html.H4(val['title']), href=val['url']),
+                        html.H6(['Source : ', val['source_name']]),
+                        html.P(['Published at : ', to_datetime(val['published']).strftime('%A %d %B %Y | %H:%M GMT+7')])
+                    ], width=9),
                     dbc.Col(html.Img(src=val['img'], style={'width': '100%'}), width=3)
                 ])),
-                html.Em(
-                    (to_datetime(val['published']) + dt.timedelta(hours=7)).strftime('%A %d %B %Y | %H:%M GMT+7'),
-                    style={'text-align': 'right'})
-            ]))
+
+            ]), className='news-cards')
 
             for val in news_feed]
 
@@ -56,48 +53,48 @@ def news_cards_generator(news_feed):
     return news_container
 
 
-def news_carousel(news_feed):
-    carousel_items = []
-    i = 0
-    state = ' active'
-    for val in news_feed:
-        if i > 0:
-            state = ''
-
-        item = \
-            html.Div([
-                html.Img(src=val['img']),
-                html.Div([
-                    html.A(html.H3(val['title']), href=val['url']),
-                    html.P(val['desc']),
-                    html.Em(
-                        (to_datetime(val['published']) + dt.timedelta(hours=7)).strftime('%A %d %B %Y | %H:%M GMT+7'))
-                ]),
-
-            ], className="carousel-item" + state)
-        carousel_items.append(item)
-        i += 1
-
-    carousel_inner = html.Div(carousel_items, className="carousel-inner")
-
-    prev = html.A(html.Span(className="carousel-control-prev-icon"),
-                  className="carousel-control-prev",
-                  href="#news-carousel",
-                  role="button",
-                  **{'data-slide': 'prev'})
-
-    next = html.A(html.Span(className="carousel-control-next-icon"),
-                  className="carousel-control-next",
-                  href="#news-carousel",
-                  role="button",
-                  **{'data-slide': 'next'})
-
-    news_carousel = html.Div([
-        carousel_inner,
-        prev,
-        next
-    ], id='news-carousel', className="carousel slide", **{'data-ride': 'carousel'})
-    return news_carousel
+# def news_carousel(news_feed):
+#     carousel_items = []
+#     i = 0
+#     state = ' active'
+#     for val in news_feed:
+#         if i > 0:
+#             state = ''
+#
+#         item = \
+#             html.Div([
+#                 html.Img(src=val['img']),
+#                 html.Div([
+#                     html.A(html.H3(val['title']), href=val['url']),
+#                     html.P(val['desc']),
+#                     html.Em(
+#                         (to_datetime(val['published']) + dt.timedelta(hours=7)).strftime('%A %d %B %Y | %H:%M GMT+7'))
+#                 ]),
+#
+#             ], className="carousel-item" + state)
+#         carousel_items.append(item)
+#         i += 1
+#
+#     carousel_inner = html.Div(carousel_items, className="carousel-inner")
+#
+#     prev = html.A(html.Span(className="carousel-control-prev-icon"),
+#                   className="carousel-control-prev",
+#                   href="#news-carousel",
+#                   role="button",
+#                   **{'data-slide': 'prev'})
+#
+#     next = html.A(html.Span(className="carousel-control-next-icon"),
+#                   className="carousel-control-next",
+#                   href="#news-carousel",
+#                   role="button",
+#                   **{'data-slide': 'next'})
+#
+#     news_carousel = html.Div([
+#         carousel_inner,
+#         prev,
+#         next
+#     ], id='news-carousel', className="carousel slide", **{'data-ride': 'carousel'})
+#     return news_carousel
 
 
 def update_cards(df):
@@ -110,7 +107,7 @@ def update_cards(df):
     label = ('Active', 'Recovered', 'Critical', 'Deaths')
     cards = \
         html.Div([
-            html.H2(['Worldwide COVID-19 Cases : ',confirmed]),
+            html.H1(['Worldwide Cases : ', confirmed]),
             dbc.CardDeck(
                 [
                     dbc.Card(
