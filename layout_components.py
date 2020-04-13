@@ -7,21 +7,9 @@ from pandas import to_datetime
 dash_link = 'https://plotly.com/dash/'
 twitter_link = 'https://developer.twitter.com/en/docs/api-reference-index'
 ln_link = 'https://www.linkedin.com/in/kevin-sukaria-23a155137/'
+PLOTLY_LOGO = "https://images.plot.ly/logo/new-branding/plotly-logomark.png"
 
-header = \
-    html.Div([
-        html.H1('COVID-19 Tweet Streamer', style={'text-align': 'center'}),
-        html.P([
-            "This is a simple ",
-            html.A(html.Strong('Dash'), href=dash_link),
-            " web application that streams today's tweets about COVID-19 through ",
-            html.A(html.Strong('official Twitter API'), href=twitter_link),
-            ", Timezone used : GMT+7"],
-        ),
-        html.P(
-            ['Creator : ',
-             html.A(html.Strong('Kevin Sukaria'), href=ln_link)],
-        )])
+header = html.Div()
 
 interval = \
     dcc.Interval(
@@ -107,7 +95,7 @@ def update_cards(df):
     label = ('Active', 'Recovered', 'Critical', 'Deaths')
     cards = \
         html.Div([
-            html.H1(['Worldwide Cases : ', confirmed]),
+            html.H3(['Worldwide Cases : ', confirmed]),
             dbc.CardDeck(
                 [
                     dbc.Card(

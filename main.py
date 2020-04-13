@@ -29,12 +29,12 @@ app.layout = html.Div([
                 id='geo-chart',
                 figure=generate_geo(),
             ),
-            html.H1('Regional Information'),
+            html.H3('Regional Information'),
             dbc.Table.from_dataframe(table, striped=True, bordered=True, hover=True),
         ], id="main-col-1", lg=7, md=12, ),
 
         dbc.Col([
-            html.H1('Headline News', style={'margin-left': '0.5em'}),
+            html.H3('Headline News', style={'margin-left': '0.5em'}),
             dbc.Row([
                 dbc.Col(dbc.Input(type="search", placeholder="Search today's headline news",id="search"), width=10),
                 dbc.Col(dbc.Button("Refresh", color="primary",id='news_refresh'), width=2),
