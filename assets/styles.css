@@ -80,13 +80,35 @@ img {
   padding: 0.8em;
 }
 
+.nav-item:hover{
+  border-bottom: 1px solid white;
+}
+
+
+
+.nav-link.active{
+  border-color: 2px solid white;
+}
+
 #news_search{
   padding:1em;
   margin-right: 0.3em;
+
+}
+
+#title, .nav-tabs{
+  background-color:black;
+  text-align: center;
 }
 
 #data_refresh{
   margin: 0;
+  margin-top: 1.5em;
+  border-radius: 10px;
+}
+
+#news_refresh{
+  border-radius: 10px;
 }
 
 #dashboard_title{
@@ -96,7 +118,7 @@ img {
 h3{
   vertical-align: baseline;
   text-align: left;
-  margin: 0.1em 0.3em 0.1em 0.5em;
+  margin: 1em 0.3em 0.1em 0.5em;
 }
 
 row{
@@ -106,6 +128,10 @@ row{
 
 table{
   text-align: center;
+}
+
+div{
+  border-width: 0;
 }
 
 .card.border-0{

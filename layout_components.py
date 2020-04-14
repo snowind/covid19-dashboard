@@ -1,8 +1,6 @@
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
-import datetime as dt
-from pandas import to_datetime
 
 dash_link = 'https://plotly.com/dash/'
 twitter_link = 'https://developer.twitter.com/en/docs/api-reference-index'
