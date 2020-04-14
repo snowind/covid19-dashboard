@@ -50,7 +50,8 @@ def refresh_data():
     df = add_columns(df)
     # df_region = add_columns_region(df_region)
     # df_subregion = add_columns_region(df_subregion)
-    df_subregion['active'] = df_subregion.confirmed - df_subregion.recovered - df_subregion.critical - df_subregion.deaths
+    df_subregion[
+        'active'] = df_subregion.confirmed - df_subregion.recovered - df_subregion.critical - df_subregion.deaths
     table = df_subregion.copy()
     table.columns = [
         'Region', 'Sub-Region', 'Confirmed', 'Recovered', 'Critical', 'Deaths', 'Active',
@@ -81,8 +82,7 @@ def refresh_data():
     return df, df_region, table, text
 
 
-def generate_geo():
-    df, df_region, table, text = refresh_data()
+def generate_geo(df, text):
     geo_fig = go.Figure(data=go.Choropleth(
         locationmode='country names',
         locations=df['country'],

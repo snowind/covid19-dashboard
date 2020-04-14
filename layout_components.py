@@ -28,8 +28,8 @@ def news_cards_generator(news_feed):
                     dbc.Col([
                         html.A(html.H5(val['title']), href=val['url']),
                         html.P(['Source : ', val['source_name']], style={'margin': '0.1em'}),
-                        html.P(['Published at : ', to_datetime(val['published']).strftime('%A %d %B %Y | %H:%M GMT+7')],
-                               style={'margin': '0.1em'})
+                        # html.P(['Published at : ', to_datetime(val['published']).strftime('%H:%M')],
+                        #        style={'margin': '0.1em'})
                     ], width=9),
                     dbc.Col(html.Img(src=val['img'], style={'width': '100%'}), width=3)
                 ])),
@@ -94,7 +94,9 @@ def update_cards(df):
     label = ('Active', 'Recovered', 'Critical', 'Deaths')
     cards = \
         html.Div([
-            html.H3(['Worldwide Cases : ', confirmed]),
+            dbc.Row([
+                html.H3(['Worldwide Cases : ', confirmed]),
+                dbc.Button("Refresh", color="primary", id='data_refresh')]),
             dbc.CardDeck(
                 [
                     dbc.Card(

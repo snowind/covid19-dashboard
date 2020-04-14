@@ -23,24 +23,22 @@ app.layout = html.Div([
     header,
     interval,
     dbc.Row([
-        dbc.Col([
-            update_cards(df),
-            dcc.Graph(
-                id='geo-chart',
-                figure=generate_geo(),
-            ),
-            html.H3('Regional Information'),
-            dbc.Table.from_dataframe(table, striped=True, bordered=True, hover=True),
-        ], id="main-col-1", lg=7, md=12, ),
+        dbc.Col(children=dbc.Row([
+            html.H3(['Worldwide Cases : ', 'Loading...']),
+            dbc.Button("Refresh", color="primary", id='data_refresh')
+        ])
+            , id="main-col-1", lg=7, md=12, ),
 
         dbc.Col([
-            html.H3('Headline News', style={'margin-left': '0.5em'}),
+            html.H3("Today's News", style={'margin-left': '0.5em'}),
             dbc.Row([
-                dbc.Col(dbc.Input(type="search", placeholder="Search today's headline news", id="search_bar"),
+                dbc.Col(dbc.Input(type="search", placeholder="Search today's news", id="search_bar"),
                         width=10),
                 dbc.Col(dbc.Button("Refresh", color="primary", id='news_refresh'), width=2),
             ], id='news_search'),
-            html.Div(news_cards_generator(news_feed), id='news-feeds')
+
+            html.Div('', id='news-feeds')
+
         ], id="main-col-2", lg=5, md=12)
     ]),
 
@@ -59,10 +57,28 @@ def update_news_feed(n_clicks, input1):
         pass
     try:
         news_feed = refresh_news(input1, source)
+        news_cards = news_cards_generator(news_feed)
     except:
-        news_feed = html.H1('No headline news found from this API')
-    news_cards = news_cards_generator(news_feed)
+        news_cards = html.H1('No headline news found from this API')
     return news_cards
+
+
+@app.callback(
+    Output('main-col-1', 'children'),
+    [Input('data_refresh', 'n_clicks')]
+)
+def update_data(n_clicks):
+    df, df_region, table, text = refresh_data()
+    output = [
+        update_cards(df),
+        dcc.Graph(
+            id='geo-chart',
+            figure=generate_geo(df, text),
+        ),
+        html.H3('Regional Information'),
+        dbc.Table.from_dataframe(table, striped=True, bordered=True, hover=True),
+    ]
+    return output
 
 
 if __name__ == '__main__':

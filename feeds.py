@@ -14,13 +14,13 @@ newsapi = NewsApiClient(api_key='22b35c71e16d41e5856cd1c78f7e132f')
 
 
 def refresh_news(query, source):
-    sources = newsapi.get_sources()
-    source_df = pd.DataFrame(data=sources['sources'])
-    source_df.columns = ['source_id', 'name', 'description', 'homepage', 'category', 'language', 'country']
-    top_headlines = newsapi.get_top_headlines(
-        q=query,
-        sources=source,
-    )
+    today = str(dt.date.today())
+    top_headlines = newsapi.get_everything(q=query,
+                                      from_param=today,
+                                      to=today,
+                                      language='en',
+                                      sort_by='popularity',
+                                      page=1)
     news_data = []
     for news in top_headlines['articles']:
         data = {
@@ -33,11 +33,10 @@ def refresh_news(query, source):
             'published': news['publishedAt']
         }
         news_data.append(data)
-    news_df = pd.DataFrame(news_data)
-    news_df = pd.merge(news_df,source_df,on='source_id')
-    news_df.sort_values(by='published', ascending=False)
-    news_json = news_df.to_dict(orient='records')
-    return news_json
+        df = pd.DataFrame(news_data)
+        df.sort_values(by='published',ascending=False)
+        news_data = df.to_dict(orient='records')
+    return news_data
 
 
 def refresh_tweets():
