@@ -26,8 +26,6 @@ def news_cards_generator(news_feed):
                     dbc.Col([
                         html.A(html.H5(val['title']), href=val['url']),
                         html.P(['Source : ', val['source_name']], style={'margin': '0.1em'}),
-                        # html.P(['Published at : ', to_datetime(val['published']).strftime('%H:%M')],
-                        #        style={'margin': '0.1em'})
                     ], width=9),
                     dbc.Col(html.Img(src=val['img'], style={'width': '100%'}), width=3)
                 ])),
@@ -93,18 +91,32 @@ def update_cards(df):
     cards = \
         html.Div([
             dbc.Row([
-                html.H3(['Worldwide Cases : ', confirmed]),
-                dbc.Button("Refresh", color="primary", id='data_refresh')],id='dashboard_title'),
-            dbc.CardDeck(
-                [
-                    dbc.Card(
-                        html.Div([
-                            html.P(lab, className='metric_text'),
-                            html.H4(met, className='metric_text'),
-                        ], className='metric_body'
-                        ), className='card border-0'
-                    ) for met, lab in zip(metric, label)
-                ], id='metric'
-            )
-        ])
+                dbc.Col(html.H3(['Worldwide Cases : ', confirmed]),xs=8),
+                dbc.Col(dbc.Row([
+
+                    html.Div(dcc.Dropdown(
+                        id='dropdown',
+                        options=
+                        [{'label': 'All', 'value': 'All'}] +
+                        [{'label': val, 'value': val} for val in
+                         df.country.sort_values(ascending=True).values],
+                        placeholder='Country filter',
+                    ), id='dropdown_div'),
+                    dbc.Button("Refresh", color="primary", id='data_refresh')
+                ]),xs=4),
+
+        ], id='dashboard_title'),
+
+        dbc.CardDeck(
+            [
+                dbc.Card(
+                    html.Div([
+                        html.P(lab, className='metric_text'),
+                        html.H4(met, className='metric_text'),
+                    ], className='metric_body'
+                    ), className='card border-0'
+                ) for met, lab in zip(metric, label)
+            ], id='metric'
+        )
+    ])
     return cards

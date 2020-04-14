@@ -28,6 +28,41 @@
   padding-right: 1.5em;
 }
 
+#title, .nav-tabs{
+  background-color:black;
+  text-align: center;
+}
+
+#title{
+  margin-bottom: 0;
+}
+
+#data_refresh{
+  margin: 0;
+  margin-top: 1.5em;
+  border-radius: 10px;
+
+}
+
+#news_refresh{
+  border-radius: 10px;
+}
+
+#dashboard_title{
+  margin-bottom: 0.3em;
+}
+
+#dropdown_div{
+  margin-top: 1.6em;
+  margin-right: 0.3em;
+  color: black;
+  width: 50%;
+}
+
+.col-9, .col-3{
+  padding: 0;
+}
+
 .card-deck{
   @include media-breakpoint-only(lg) {
   column-count: 4;
@@ -96,24 +131,6 @@ img {
 
 }
 
-#title, .nav-tabs{
-  background-color:black;
-  text-align: center;
-}
-
-#data_refresh{
-  margin: 0;
-  margin-top: 1.5em;
-  border-radius: 10px;
-}
-
-#news_refresh{
-  border-radius: 10px;
-}
-
-#dashboard_title{
-  margin-bottom: 2em;
-}
 
 h3{
   vertical-align: baseline;

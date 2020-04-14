@@ -6,14 +6,16 @@ from dash.dependencies import Input, Output, State
 from function import refresh_data, generate_geo
 from feeds import refresh_news, refresh_tweets
 from layout_components import header, interval, update_cards, news_cards_generator
+
 metas = [
-    {'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}
+    # {'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}
 ]
 external_stylesheets = [dbc.themes.SUPERHERO]
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets,meta_tags=metas)
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets, meta_tags=metas)
+app.config['suppress_callback_exceptions']=True
 server = app.server
 
-
+df = ''
 query = 'COVID-19'
 source = ''
 
@@ -23,7 +25,7 @@ dashboard = html.Div([
     dbc.Row([
         dbc.Col(children=dbc.Row([
             html.H3(['Worldwide Cases : ', 'Loading...']),
-            dbc.Button("Refresh", color="primary", id='data_refresh')
+            dbc.Button("Refresh", color="primary", id='data_refresh', className='button hidden'),
         ]), id="main-col-1", lg=7, md=12, ),
 
         dbc.Col([
@@ -40,7 +42,7 @@ dashboard = html.Div([
 
 app.layout = \
     html.Div([
-        html.H4(html.Strong('GLOBAL COVID-19 DASHBOARD'),id='title'),
+        html.H4(html.Strong('GLOBAL COVID-19 DASHBOARD'), id='title'),
         dbc.Tabs(
             [
                 dbc.Tab(dashboard, label="Dashboard"),
@@ -71,6 +73,7 @@ def update_news_feed(n_clicks, input1):
     [Input('data_refresh', 'n_clicks')]
 )
 def update_data(n_clicks):
+    global df
     df, df_region, table, text = refresh_data()
     output = [
         update_cards(df),
@@ -82,7 +85,6 @@ def update_data(n_clicks):
         dbc.Table.from_dataframe(table, striped=True, bordered=True, hover=True),
     ]
     return output
-
-
+print(df)
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    app.run_server(debug=True)
