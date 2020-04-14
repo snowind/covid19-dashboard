@@ -96,7 +96,7 @@ def update_cards(df):
         html.Div([
             dbc.Row([
                 html.H3(['Worldwide Cases : ', confirmed]),
-                dbc.Button("Refresh", color="primary", id='data_refresh')]),
+                dbc.Button("Refresh", color="primary", id='data_refresh')],id='dashboard_title'),
             dbc.CardDeck(
                 [
                     dbc.Card(

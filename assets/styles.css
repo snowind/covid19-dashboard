@@ -87,7 +87,10 @@ img {
 
 #data_refresh{
   margin: 0;
+}
 
+#dashboard_title{
+  margin-bottom: 2em;
 }
 
 h3{
@@ -98,6 +101,7 @@ h3{
 
 row{
   margin: 0;
+  margin-bottom: 1em;
 }
 
 table{

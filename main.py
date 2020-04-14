@@ -37,7 +37,7 @@ app.layout = html.Div([
                 dbc.Col(dbc.Button("Refresh", color="primary", id='news_refresh'), width=2),
             ], id='news_search'),
 
-            html.Div('', id='news-feeds')
+            html.Div(html.H3('Loading...'), id='news-feeds')
 
         ], id="main-col-2", lg=5, md=12)
     ]),
