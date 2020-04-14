@@ -6,10 +6,13 @@ from dash.dependencies import Input, Output, State
 from function import refresh_data, generate_geo
 from feeds import refresh_news, refresh_tweets
 from layout_components import header, interval, update_cards, news_cards_generator
-
+metas = [
+    {'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}
+]
 external_stylesheets = [dbc.themes.SUPERHERO]
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets,meta_tags=metas)
 server = app.server
+
 
 query = 'COVID-19'
 source = ''
@@ -33,7 +36,7 @@ dashboard = html.Div([
         ], id="main-col-2", lg=5, md=12)
     ]),
 
-], id='container')
+], id='container fluid')
 
 app.layout = \
     html.Div([
