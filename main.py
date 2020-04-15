@@ -4,19 +4,19 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
 from function import refresh_data, generate_geo
-from feeds import refresh_news, refresh_tweets
-from layout_components import header, interval, update_cards, news_cards_generator
+from feeds import refresh_news
+from layout_components import header, interval, update_cards, news_cards_generator, country_filtering
 
+df, df_region, table = refresh_data()
 metas = [
-    # {'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}
+    {'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}
 ]
-external_stylesheets = [dbc.themes.SUPERHERO]
+external_stylesheets = [dbc.themes.DARKLY]
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets, meta_tags=metas)
-app.config['suppress_callback_exceptions']=True
+app.config['suppress_callback_exceptions'] = True
 server = app.server
 
-df = ''
-query = 'COVID-19'
+query = 'corona'
 source = ''
 
 dashboard = html.Div([
@@ -31,7 +31,7 @@ dashboard = html.Div([
         dbc.Col([
             html.H3("Today's News", style={'margin-left': '0.5em'}),
             dbc.Row([
-                dbc.Col(dbc.Input(type="search", placeholder="Search today's news", id="search_bar"), width=10),
+                dbc.Col(dbc.Input(type="search", placeholder="Search today's news", id="search_bar",autoComplete='off'), width=10),
                 dbc.Col(dbc.Button("Refresh", color="primary", id='news_refresh'), width=2),
             ], id='news_search'),
             html.Div(html.H3('Loading...'), id='news-feeds')
@@ -64,27 +64,55 @@ def update_news_feed(n_clicks, input1):
         news_feed = refresh_news(input1, source)
         news_cards = news_cards_generator(news_feed)
     except:
-        news_cards = html.H1('No headline news found from this API')
+        news_cards = html.H1('No news found')
     return news_cards
 
 
 @app.callback(
     Output('main-col-1', 'children'),
-    [Input('data_refresh', 'n_clicks')]
+    [
+        Input('data_refresh', 'n_clicks'),
+    ]
 )
 def update_data(n_clicks):
     global df
-    df, df_region, table, text = refresh_data()
+    global table
+    df, df_region, table = refresh_data()
     output = [
         update_cards(df),
         dcc.Graph(
             id='geo-chart',
-            figure=generate_geo(df, text),
+            figure=generate_geo(df),
+            animate=False
         ),
         html.H3('Regional Information'),
         dbc.Table.from_dataframe(table, striped=True, bordered=True, hover=True),
     ]
     return output
-print(df)
+
+
+@app.callback([
+    Output('metric-title', 'children'),
+    Output('metric', 'children'),
+    Output('geo-chart', 'figure'),
+],
+    [Input('dropdown', 'value')])
+def country_filter(value):
+    if value == (None or 'Worldwide'):
+        value = 'Worldwide'
+        filtered_df = df
+        filtered_region = df
+    else:
+        filtered_df = df[df.country == value]
+        try:
+            filtered_region = df[df['sub-region'] == filtered_df['sub-region'].values[0]]
+        except:
+            filtered_df = df
+            filtered_region = df
+    filtered_title, filtered_cards = country_filtering(filtered_df, value)
+    filtered_figure = generate_geo(filtered_region)
+    return filtered_title, filtered_cards,filtered_figure
+
+
 if __name__ == '__main__':
     app.run_server(debug=True)

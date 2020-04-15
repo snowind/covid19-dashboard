@@ -91,32 +91,56 @@ def update_cards(df):
     cards = \
         html.Div([
             dbc.Row([
-                dbc.Col(html.H3(['Worldwide Cases : ', confirmed]),xs=8),
+                dbc.Col(html.H3('Worldwide Cases : ' + confirmed, id='metric-title'), md=8, xs=12),
                 dbc.Col(dbc.Row([
 
                     html.Div(dcc.Dropdown(
                         id='dropdown',
                         options=
-                        [{'label': 'All', 'value': 'All'}] +
+                        [{'label': 'Worldwide', 'value': 'Worldwide'}] +
                         [{'label': val, 'value': val} for val in
                          df.country.sort_values(ascending=True).values],
                         placeholder='Country filter',
                     ), id='dropdown_div'),
                     dbc.Button("Refresh", color="primary", id='data_refresh')
-                ]),xs=4),
+                ]), md=4, id='country-search', className="row justify-content-center"),
 
-        ], id='dashboard_title'),
+            ], id='dashboard_title'),
 
-        dbc.CardDeck(
-            [
-                dbc.Card(
-                    html.Div([
-                        html.P(lab, className='metric_text'),
-                        html.H4(met, className='metric_text'),
-                    ], className='metric_body'
-                    ), className='card border-0'
-                ) for met, lab in zip(metric, label)
-            ], id='metric'
-        )
-    ])
+            dbc.CardDeck(
+                [
+                    dbc.Card(
+                        html.Div([
+                            html.P(lab, className='metric_text'),
+                            html.H4(met, className='metric_text'),
+                        ], className='metric_body'
+                        ), className='card border-0'
+                    ) for met, lab in zip(metric, label)
+                ], id='metric'
+            )
+        ])
     return cards
+
+
+def country_filtering(df, value):
+    confirmed = f'{int(round(df.confirmed.sum() / 1)):,}'
+    active = f'{int(round(df.active.sum() / 1)):,}'
+    recovered = f'{int(round(df.recovered.sum() / 1)):,}'
+    critical = f'{int(round(df.critical.sum() / 1)):,}'
+    deaths = f'{int(round(df.deaths.sum() / 1)):,}'
+    metric = (active, recovered, critical, deaths)
+    label = ('Active', 'Recovered', 'Critical', 'Deaths')
+    try:
+        filtered_metric_title = value + ' Cases : ' + confirmed
+    except:
+        filtered_metric_title = 'Worldwide Cases : ' + confirmed
+    filtered_cards = [
+        dbc.Card(
+            html.Div([
+                html.P(lab, className='metric_text'),
+                html.H4(met, className='metric_text'),
+            ], className='metric_body'
+            ), className='card border-0'
+        ) for met, lab in zip(metric, label)
+    ]
+    return filtered_metric_title, filtered_cards

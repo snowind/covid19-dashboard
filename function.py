@@ -50,8 +50,7 @@ def refresh_data():
     df = add_columns(df)
     # df_region = add_columns_region(df_region)
     # df_subregion = add_columns_region(df_subregion)
-    df_subregion[
-        'active'] = df_subregion.confirmed - df_subregion.recovered - df_subregion.critical - df_subregion.deaths
+    df_subregion['active'] = df_subregion.confirmed - df_subregion.recovered - df_subregion.critical - df_subregion.deaths
     table = df_subregion.copy()
     table.columns = [
         'Region', 'Sub-Region', 'Confirmed', 'Recovered', 'Critical', 'Deaths', 'Active',
@@ -67,6 +66,11 @@ def refresh_data():
     # table['% Critical'] = table['% Critical'].astype(int).astype(str) + ' %'
     # table['% Death'] = table['% Death'].astype(int).astype(str) + ' %'
 
+
+    return df, df_region, table
+
+
+def generate_geo(df):
     text = (
             df['country'] + br + br +
             'Confirmed  : ' + df.apply(lambda x: f'{x.confirmed:,}', axis=1) + br +
@@ -79,16 +83,13 @@ def refresh_data():
             '% Critical        : ' + df.apply(lambda x: f"{x.c:.0%}", axis=1) + br +
             '% Deaths       : ' + df.apply(lambda x: f"{x.d:.0%}", axis=1)
     )
-    return df, df_region, table, text
 
-
-def generate_geo(df, text):
     geo_fig = go.Figure(data=go.Choropleth(
         locationmode='country names',
         locations=df['country'],
         z=df['confirmed'],
         colorscale='bupu',
-        marker_line_color='black',
+        marker_line_color='darkgrey',
         marker_line_width=1,
         zmax=df.confirmed.quantile(q=0.95),
         zmin=0,
@@ -97,7 +98,6 @@ def generate_geo(df, text):
         hovertemplate='%{text}',
         showscale=False,
     ))
-
     geo_fig.update_layout(
         autosize=True,
         hoverlabel=dict(
@@ -114,6 +114,7 @@ def generate_geo(df, text):
     )
 
     geo_fig.update_geos(
+        fitbounds="locations",
         visible=False,
         lataxis_showgrid=False,
         lonaxis_showgrid=False,
