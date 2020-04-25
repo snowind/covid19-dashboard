@@ -8,17 +8,19 @@
 
 ## How to run this App?
 # ENV
-. pipenv --python 3.7 
-. pipenv shell 
-. pipenv install -r requirements.txt 
-. pipenv list 
+- pipenv --python 3.7 
+- pipenv shell 
+- pipenv install -r requirements.txt 
+- pipenv list 
 
 # RUN
-. pipenv shell 
-. python main.py 
+- pipenv shell 
+- python main.py 
 
 
 ## Screenshots 
-
+- screenshot/image1.png 
+- screenshot/image2.png 
+- screenshot/image3.png 
 
 Updated by Zhou Hui. 2020/04/25 
