@@ -3,15 +3,15 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
-from function import refresh_data, generate_geo
-from feeds import refresh_news
-from layout_components import header, interval, update_cards, news_cards_generator, country_filtering
+from util.function import refresh_data, generate_geo
+from util.feeds import refresh_news
+from layout.layout_components import header, interval, update_cards, news_cards_generator, country_filtering, create_dashboard, create_layout
 
 df, df_region, table = refresh_data()
 metas = [
     {'name': 'viewport', 'content': 'width=device-width, initial-scale=1'}
 ]
-external_stylesheets = [dbc.themes.DARKLY]
+external_stylesheets = [dbc.themes.MINTY]
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets, meta_tags=metas)
 app.config['suppress_callback_exceptions'] = True
 server = app.server
@@ -19,37 +19,8 @@ server = app.server
 query = 'corona'
 source = ''
 
-dashboard = html.Div([
-    header,
-    interval,
-    dbc.Row([
-        dbc.Col(children=dbc.Row([
-            html.H3(['Worldwide Cases : ', 'Loading...']),
-            dbc.Button("Refresh", color="primary", id='data_refresh', className='button hidden'),
-        ]), id="main-col-1", lg=7, md=12, ),
 
-        dbc.Col([
-            html.H3("Today's News", style={'margin-left': '0.5em'}),
-            dbc.Row([
-                dbc.Col(dbc.Input(type="search", placeholder="Search today's news", id="search_bar",autoComplete='off'), width=10),
-                dbc.Col(dbc.Button("Refresh", color="primary", id='news_refresh'), width=2),
-            ], id='news_search'),
-            html.Div(html.H3('Loading...'), id='news-feeds')
-        ], id="main-col-2", lg=5, md=12)
-    ]),
-
-], id='container fluid')
-
-app.layout = \
-    html.Div([
-        html.H4(html.Strong('GLOBAL COVID-19 DASHBOARD'), id='title'),
-        dbc.Tabs(
-            [
-                dbc.Tab(dashboard, label="Dashboard"),
-                dbc.Tab('', label="About"),
-            ]
-        )
-    ])
+app.layout = create_layout()
 
 
 @app.callback(

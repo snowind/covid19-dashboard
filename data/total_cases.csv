@@ -1,0 +1,208 @@
+,country,confirmed,recovered,critical,deaths,id,region,sub-region,active,a,b,c,d
+3,Algeria,3127,1408,40,415,DZ,Africa,Northern Africa,1264,0.4,0.45,0.01,0.13
+60,Egypt,4092,1075,0,294,EG,Africa,Northern Africa,2723,0.67,0.26,0.0,0.07
+120,Libya,61,18,0,2,LY,Africa,Northern Africa,41,0.67,0.3,0.0,0.03
+143,Morocco,3758,486,1,158,MA,Africa,Northern Africa,3113,0.83,0.13,0.0,0.04
+204,Sudan,174,14,0,16,SD,Africa,Northern Africa,144,0.83,0.08,0.0,0.09
+218,Tunisia,922,194,20,38,TN,Africa,Northern Africa,670,0.73,0.21,0.02,0.04
+6,Angola,25,6,0,2,AO,Africa,Sub-Saharan Africa,17,0.68,0.24,0.0,0.08
+23,Benin,54,27,0,1,BJ,Africa,Sub-Saharan Africa,26,0.48,0.5,0.0,0.02
+29,Botswana,22,0,0,1,BW,Africa,Sub-Saharan Africa,21,0.95,0.0,0.0,0.05
+36,Burkina Faso,629,425,0,41,BF,Africa,Sub-Saharan Africa,163,0.26,0.68,0.0,0.07
+37,Burundi,11,4,0,1,BI,Africa,Sub-Saharan Africa,6,0.55,0.36,0.0,0.09
+39,Cameroon,1430,668,20,43,CM,Africa,Sub-Saharan Africa,699,0.49,0.47,0.01,0.03
+41,CAR,16,10,0,0,CF,Africa,Sub-Saharan Africa,6,0.38,0.62,0.0,0.0
+42,Chad,40,8,0,0,TD,Africa,Sub-Saharan Africa,32,0.8,0.2,0.0,0.0
+48,Congo,200,19,0,6,CG,Africa,Sub-Saharan Africa,175,0.88,0.1,0.0,0.03
+58,DRC,394,48,0,25,CD,Africa,Sub-Saharan Africa,321,0.81,0.12,0.0,0.06
+62,Equatorial Guinea,214,7,0,1,GQ,Africa,Sub-Saharan Africa,206,0.96,0.03,0.0,0.0
+63,Eritrea,39,11,0,0,ER,Africa,Sub-Saharan Africa,28,0.72,0.28,0.0,0.0
+65,Eswatini,36,10,0,1,SZ,Africa,Sub-Saharan Africa,25,0.69,0.28,0.0,0.03
+66,Ethiopia,117,25,0,3,ET,Africa,Sub-Saharan Africa,89,0.76,0.21,0.0,0.03
+75,Gabon,172,26,1,3,GA,Africa,Sub-Saharan Africa,142,0.83,0.15,0.01,0.02
+76,Gambia,10,8,0,1,GM,Africa,Sub-Saharan Africa,1,0.1,0.8,0.0,0.1
+79,Ghana,1279,134,4,10,GH,Africa,Sub-Saharan Africa,1131,0.88,0.1,0.0,0.01
+88,Guinea,954,191,0,6,GN,Africa,Sub-Saharan Africa,757,0.79,0.2,0.0,0.01
+89,Guinea-Bissau,52,3,0,0,GW,Africa,Sub-Saharan Africa,49,0.94,0.06,0.0,0.0
+105,Ivory Coast,1077,419,0,14,CI,Africa,Sub-Saharan Africa,644,0.6,0.39,0.0,0.01
+111,Kenya,336,94,2,14,KE,Africa,Sub-Saharan Africa,226,0.67,0.28,0.01,0.04
+119,Liberia,117,25,0,8,LR,Africa,Sub-Saharan Africa,84,0.72,0.21,0.0,0.07
+125,Madagascar,122,61,1,0,MG,Africa,Sub-Saharan Africa,60,0.49,0.5,0.01,0.0
+126,Malawi,33,4,1,3,MW,Africa,Sub-Saharan Africa,25,0.76,0.12,0.03,0.09
+129,Mali,325,87,0,21,ML,Africa,Sub-Saharan Africa,217,0.67,0.27,0.0,0.06
+133,Mauritania,7,6,0,1,MR,Africa,Sub-Saharan Africa,0,0.0,0.86,0.0,0.14
+134,Mauritius,331,285,3,9,MU,Africa,Sub-Saharan Africa,34,0.1,0.86,0.01,0.03
+135,Mayotte,354,144,4,4,YT,Africa,Sub-Saharan Africa,202,0.57,0.41,0.01,0.01
+144,Mozambique,65,12,0,0,MZ,Africa,Sub-Saharan Africa,53,0.82,0.18,0.0,0.0
+153,Niger,681,289,0,24,NE,Africa,Sub-Saharan Africa,368,0.54,0.42,0.0,0.04
+154,Nigeria,1095,208,2,32,NG,Africa,Sub-Saharan Africa,853,0.78,0.19,0.0,0.03
+173,Reunion,412,300,2,0,RE,Africa,Sub-Saharan Africa,110,0.27,0.73,0.0,0.0
+176,Rwanda,176,87,0,0,RW,Africa,Sub-Saharan Africa,89,0.51,0.49,0.0,0.0
+185,Sao Tome and Principe,4,0,0,0,ST,Africa,Sub-Saharan Africa,4,1.0,0.0,0.0,0.0
+187,Senegal,545,262,1,7,SN,Africa,Sub-Saharan Africa,275,0.5,0.48,0.0,0.01
+189,Seychelles,11,6,0,0,SC,Africa,Sub-Saharan Africa,5,0.45,0.55,0.0,0.0
+190,Sierra Leone,82,10,0,2,SL,Africa,Sub-Saharan Africa,70,0.85,0.12,0.0,0.02
+196,Somalia,328,8,2,16,SO,Africa,Sub-Saharan Africa,302,0.92,0.02,0.01,0.05
+197,South Africa,4220,1473,36,79,ZA,Africa,Sub-Saharan Africa,2632,0.62,0.35,0.01,0.02
+200,South Sudan,5,0,0,0,SS,Africa,Sub-Saharan Africa,5,1.0,0.0,0.0,0.0
+212,Tanzania,299,48,7,10,TZ,Africa,Sub-Saharan Africa,234,0.78,0.16,0.02,0.03
+215,Togo,90,59,0,6,TG,Africa,Sub-Saharan Africa,25,0.28,0.66,0.0,0.07
+225,Uganda,75,46,0,0,UG,Africa,Sub-Saharan Africa,29,0.39,0.61,0.0,0.0
+236,Zambia,84,37,1,3,ZM,Africa,Sub-Saharan Africa,43,0.51,0.44,0.01,0.04
+237,Zimbabwe,29,2,0,4,ZW,Africa,Sub-Saharan Africa,23,0.79,0.07,0.0,0.14
+7,Anguilla,3,1,0,0,AI,Americas,Latin America and the Caribbean,2,0.67,0.33,0.0,0.0
+9,Antigua and Barbuda,24,11,1,3,AG,Americas,Latin America and the Caribbean,9,0.38,0.46,0.04,0.12
+10,Argentina,3607,976,123,176,AR,Americas,Latin America and the Caribbean,2332,0.65,0.27,0.03,0.05
+12,Aruba,100,69,4,2,AW,Americas,Latin America and the Caribbean,25,0.25,0.69,0.04,0.02
+16,Bahamas,73,15,1,11,BS,Americas,Latin America and the Caribbean,46,0.63,0.21,0.01,0.15
+19,Barbados,77,31,4,6,BB,Americas,Latin America and the Caribbean,36,0.47,0.4,0.05,0.08
+22,Belize,18,5,1,2,BZ,Americas,Latin America and the Caribbean,10,0.56,0.28,0.06,0.11
+26,Bolivia,807,54,3,44,BO,Americas,Latin America and the Caribbean,706,0.87,0.07,0.0,0.05
+27,"Bonaire, Sint Eustatius and Saba",5,0,0,0,BQ,Americas,Latin America and the Caribbean,5,1.0,0.0,0.0,0.0
+31,Brazil,54043,27655,8318,3704,BR,Americas,Latin America and the Caribbean,14366,0.27,0.51,0.15,0.07
+33,British Virgin Islands,54,3,0,3,VG,Americas,Latin America and the Caribbean,48,0.89,0.06,0.0,0.06
+43,Chile,12306,6327,408,174,CL,Americas,Latin America and the Caribbean,5397,0.44,0.51,0.03,0.01
+47,Colombia,4881,1003,117,225,CO,Americas,Latin America and the Caribbean,3536,0.72,0.21,0.02,0.05
+50,Costa Rica,687,216,7,6,CR,Americas,Latin America and the Caribbean,458,0.67,0.31,0.01,0.01
+52,Cuba,1285,416,11,49,CU,Americas,Latin America and the Caribbean,809,0.63,0.32,0.01,0.04
+53,Curaçao,16,11,0,1,CW,Americas,Latin America and the Caribbean,4,0.25,0.69,0.0,0.06
+56,Dominica,16,10,0,0,DM,Americas,Latin America and the Caribbean,6,0.38,0.62,0.0,0.0
+57,Dominican Republic,5749,763,135,267,DO,Americas,Latin America and the Caribbean,4584,0.8,0.13,0.02,0.05
+59,Ecuador,22719,1366,127,576,EC,Americas,Latin America and the Caribbean,20650,0.91,0.06,0.01,0.03
+61,El Salvador,274,75,2,8,SV,Americas,Latin America and the Caribbean,189,0.69,0.27,0.01,0.03
+68,Falkland Islands,13,11,0,0,FK,Americas,Latin America and the Caribbean,2,0.15,0.85,0.0,0.0
+72,French Guiana,111,87,0,1,GF,Americas,Latin America and the Caribbean,23,0.21,0.78,0.0,0.01
+83,Grenada,15,7,4,0,GD,Americas,Latin America and the Caribbean,4,0.27,0.47,0.27,0.0
+84,Guadeloupe,149,82,11,12,AG,Americas,Latin America and the Caribbean,44,0.3,0.55,0.07,0.08
+86,Guatemala,430,30,5,11,GT,Americas,Latin America and the Caribbean,384,0.89,0.07,0.01,0.03
+90,Guyana,73,12,5,7,GY,Americas,Latin America and the Caribbean,49,0.67,0.16,0.07,0.1
+91,Haiti,72,6,0,6,HT,Americas,Latin America and the Caribbean,60,0.83,0.08,0.0,0.08
+93,Honduras,591,58,10,55,HN,Americas,Latin America and the Caribbean,468,0.79,0.1,0.02,0.09
+106,Jamaica,288,28,0,7,JM,Americas,Latin America and the Caribbean,253,0.88,0.1,0.0,0.02
+132,Martinique,170,77,6,14,MQ,Americas,Latin America and the Caribbean,73,0.43,0.45,0.04,0.08
+136,Mexico,12872,7149,378,1221,MX,Americas,Latin America and the Caribbean,4124,0.32,0.56,0.03,0.09
+142,Montserrat,11,2,1,1,MS,Americas,Latin America and the Caribbean,7,0.64,0.18,0.09,0.09
+152,Nicaragua,11,7,0,3,NI,Americas,Latin America and the Caribbean,1,0.09,0.64,0.0,0.27
+163,Panama,5338,319,87,154,PA,Americas,Latin America and the Caribbean,4778,0.9,0.06,0.02,0.03
+165,Paraguay,223,78,1,9,PY,Americas,Latin America and the Caribbean,135,0.61,0.35,0.0,0.04
+166,Peru,21648,7496,505,634,PE,Americas,Latin America and the Caribbean,13013,0.6,0.35,0.02,0.03
+171,Puerto Rico,39,1,0,2,PR,Americas,Latin America and the Caribbean,36,0.92,0.03,0.0,0.05
+177,Saint Barthélemy,6,6,0,0,BL,Americas,Latin America and the Caribbean,0,0.0,1.0,0.0,0.0
+179,Saint Kitts and Nevis,15,2,0,0,KN,Americas,Latin America and the Caribbean,13,0.87,0.13,0.0,0.0
+180,Saint Lucia,15,15,0,0,LC,Americas,Latin America and the Caribbean,0,0.0,1.0,0.0,0.0
+181,Saint Martin,38,24,3,3,MF,Americas,Latin America and the Caribbean,8,0.21,0.63,0.08,0.08
+192,Sint Maarten,73,22,8,12,SX,Americas,Latin America and the Caribbean,31,0.42,0.3,0.11,0.16
+203,St. Vincent Grenadines,14,5,0,0,VC,Americas,Latin America and the Caribbean,9,0.64,0.36,0.0,0.0
+205,Suriname,10,7,0,1,SR,Americas,Latin America and the Caribbean,2,0.2,0.7,0.0,0.1
+217,Trinidad and Tobago,115,48,0,8,TT,Americas,Latin America and the Caribbean,59,0.51,0.42,0.0,0.07
+221,Turks and Caicos,11,4,0,1,TC,Americas,Latin America and the Caribbean,6,0.55,0.36,0.0,0.09
+223,U.S. Virgin Islands,17,0,0,0,VI,Americas,Latin America and the Caribbean,17,1.0,0.0,0.0,0.0
+228,Uruguay,563,369,9,12,UY,Americas,Latin America and the Caribbean,173,0.31,0.66,0.02,0.02
+233,Venezuela,318,132,4,10,VE,Americas,Latin America and the Caribbean,172,0.54,0.42,0.01,0.03
+24,Bermuda,99,39,10,5,BM,Americas,Northern America,45,0.45,0.39,0.1,0.05
+40,Canada,44856,15469,557,2302,CA,Americas,Northern America,26528,0.59,0.34,0.01,0.05
+82,Greenland,11,11,0,1,GL,Americas,Northern America,-1,-0.09,1.0,0.0,0.09
+182,Saint Pierre and Miquelon,1,0,0,0,PM,Americas,Northern America,1,1.0,0.0,0.0,0.0
+229,USA,925758,110432,15097,52217,US,Americas,Northern America,748012,0.81,0.12,0.02,0.06
+110,Kazakhstan,2482,604,29,25,KZ,Asia,Central Asia,1824,0.73,0.24,0.01,0.01
+114,Kyrgyzstan,665,345,11,8,KG,Asia,Central Asia,301,0.45,0.52,0.02,0.01
+230,Uzbekistan,1836,621,8,8,UZ,Asia,Central Asia,1199,0.65,0.34,0.0,0.0
+44,China,88462,82808,49,4632,CN,Asia,Eastern Asia,973,0.01,0.94,0.0,0.05
+94,Hong Kong,1036,725,7,4,HK,Asia,Eastern Asia,300,0.29,0.7,0.01,0.0
+107,Japan,12829,1530,263,345,JP,Asia,Eastern Asia,10691,0.83,0.12,0.02,0.03
+124,Macao,45,27,1,0,MO,Asia,Eastern Asia,17,0.38,0.6,0.02,0.0
+140,Mongolia,37,9,0,0,MN,Asia,Eastern Asia,28,0.76,0.24,0.0,0.0
+199,South Korea,10718,8635,55,240,KR,Asia,Eastern Asia,1788,0.17,0.81,0.01,0.02
+210,Taiwan,429,275,0,6,TW,Asia,Eastern Asia,148,0.34,0.64,0.0,0.01
+34,Brunei,138,120,2,1,BN,Asia,South-eastern Asia,15,0.11,0.87,0.01,0.01
+38,Cambodia,122,117,1,0,KH,Asia,South-eastern Asia,4,0.03,0.96,0.01,0.0
+98,Indonesia,8211,1002,0,689,ID,Asia,South-eastern Asia,6520,0.79,0.12,0.0,0.08
+115,Laos,19,4,0,0,LA,Asia,South-eastern Asia,15,0.79,0.21,0.0,0.0
+127,Malaysia,5691,3663,41,96,MY,Asia,South-eastern Asia,1891,0.33,0.64,0.01,0.02
+145,Myanmar,144,9,0,5,MM,Asia,South-eastern Asia,130,0.9,0.06,0.0,0.03
+167,Philippines,7192,762,1,477,PH,Asia,South-eastern Asia,5952,0.83,0.11,0.0,0.07
+191,Singapore,12693,956,24,12,SG,Asia,South-eastern Asia,11701,0.92,0.08,0.0,0.0
+213,Thailand,2907,2547,61,51,TH,Asia,South-eastern Asia,248,0.09,0.88,0.02,0.02
+214,Timor-Leste,24,2,0,0,TL,Asia,South-eastern Asia,22,0.92,0.08,0.0,0.0
+234,Vietnam,270,225,8,0,VN,Asia,South-eastern Asia,37,0.14,0.83,0.03,0.0
+0,Afghanistan,1351,188,7,43,AF,Asia,Southern Asia,1113,0.82,0.14,0.01,0.03
+18,Bangladesh,4689,112,1,131,BD,Asia,Southern Asia,4445,0.95,0.02,0.0,0.03
+25,Bhutan,7,3,0,0,BT,Asia,Southern Asia,4,0.57,0.43,0.0,0.0
+97,India,24530,5498,0,780,IN,Asia,Southern Asia,18252,0.74,0.22,0.0,0.03
+99,Iran,88194,66599,3121,5574,IR,Asia,Southern Asia,12900,0.15,0.76,0.04,0.06
+128,Maldives,129,16,2,0,MV,Asia,Southern Asia,111,0.86,0.12,0.02,0.0
+148,Nepal,49,11,0,0,NP,Asia,Southern Asia,38,0.78,0.22,0.0,0.0
+161,Pakistan,11940,2755,111,253,PK,Asia,Southern Asia,8821,0.74,0.23,0.01,0.02
+202,Sri Lanka,420,116,2,7,LK,Asia,Southern Asia,295,0.7,0.28,0.0,0.02
+11,Armenia,1596,728,10,27,AM,Asia,Western Asia,831,0.52,0.46,0.01,0.02
+15,Azerbaijan,1592,1013,14,21,AZ,Asia,Western Asia,544,0.34,0.64,0.01,0.01
+17,Bahrain,2518,1113,1,8,BH,Asia,Western Asia,1396,0.55,0.44,0.0,0.0
+77,Georgia,456,132,6,5,GE,Asia,Western Asia,313,0.69,0.29,0.01,0.01
+100,Iraq,1708,1204,0,86,IQ,Asia,Western Asia,418,0.24,0.7,0.0,0.05
+103,Israel,15058,6003,137,194,IL,Asia,Western Asia,8724,0.58,0.4,0.01,0.01
+109,Jordan,441,326,5,7,JO,Asia,Western Asia,103,0.23,0.74,0.01,0.02
+113,Kuwait,2614,613,60,15,KW,Asia,Western Asia,1926,0.74,0.23,0.02,0.01
+117,Lebanon,696,140,46,22,LB,Asia,Western Asia,488,0.7,0.2,0.07,0.03
+160,Oman,1790,325,3,10,OM,Asia,Western Asia,1452,0.81,0.18,0.0,0.01
+172,Qatar,8525,809,72,10,QA,Asia,Western Asia,7634,0.9,0.09,0.01,0.0
+186,Saudi Arabia,15102,2049,93,127,SA,Asia,Western Asia,12833,0.85,0.14,0.01,0.01
+209,Syria,42,6,0,3,SY,Asia,Western Asia,33,0.79,0.14,0.0,0.07
+219,Turkey,104912,21737,1790,2600,TR,Asia,Western Asia,78785,0.75,0.21,0.02,0.02
+224,UAE,9281,1760,1,64,AE,Asia,Western Asia,7456,0.8,0.19,0.0,0.01
+235,Yemen,1,1,0,0,YE,Asia,Western Asia,0,0.0,1.0,0.0,0.0
+20,Belarus,8773,1120,92,63,BY,Europe,Eastern Europe,7498,0.85,0.13,0.01,0.01
+35,Bulgaria,1234,197,37,54,BG,Europe,Eastern Europe,946,0.77,0.16,0.03,0.04
+55,Djibouti,999,330,0,2,PL,Europe,Eastern Europe,667,0.67,0.33,0.0,0.0
+95,Hungary,2443,458,61,262,HU,Europe,Eastern Europe,1662,0.68,0.19,0.02,0.11
+138,Moldova,3110,755,212,84,MD,Europe,Eastern Europe,2059,0.66,0.24,0.07,0.03
+169,Poland,10892,2126,160,494,PL,Europe,Eastern Europe,8112,0.74,0.2,0.01,0.05
+174,Romania,10417,2817,241,567,RO,Europe,Eastern Europe,6792,0.65,0.27,0.02,0.05
+175,Russia,68622,5568,2300,615,RU,Europe,Eastern Europe,60139,0.88,0.08,0.03,0.01
+193,Slovakia,1360,355,8,17,SK,Europe,Eastern Europe,980,0.72,0.26,0.01,0.01
+227,Ukraine,8125,782,104,201,UA,Europe,Eastern Europe,7038,0.87,0.1,0.01,0.02
+54,Denmark,8210,5526,69,403,DK,Europe,Northern Europe,2212,0.27,0.67,0.01,0.05
+64,Estonia,1605,206,6,46,EE,Europe,Northern Europe,1347,0.84,0.13,0.0,0.03
+67,Faeroe Islands,187,178,0,0,FO,Europe,Northern Europe,9,0.05,0.95,0.0,0.0
+70,Finland,4395,2500,61,177,FI,Europe,Northern Europe,1657,0.38,0.57,0.01,0.04
+87,Guernsey,239,73,0,9,GG,Europe,Northern Europe,157,0.66,0.31,0.0,0.04
+96,Iceland,1789,1542,5,10,IS,Europe,Northern Europe,232,0.13,0.86,0.0,0.01
+101,Ireland,18184,9233,142,1014,IE,Europe,Northern Europe,7795,0.43,0.51,0.01,0.06
+102,Isle of Man,308,230,20,18,IM,Europe,Northern Europe,40,0.13,0.75,0.06,0.06
+108,Jersey,245,0,0,12,JE,Europe,Northern Europe,233,0.95,0.0,0.0,0.05
+116,Latvia,804,267,6,12,LV,Europe,Northern Europe,519,0.65,0.33,0.01,0.01
+122,Lithuania,1426,460,17,41,LT,Europe,Northern Europe,908,0.64,0.32,0.01,0.03
+159,Norway,7463,32,53,199,NO,Europe,Northern Europe,7179,0.96,0.0,0.01,0.03
+207,Sweden,17567,1005,547,2152,SE,Europe,Northern Europe,13863,0.79,0.06,0.03,0.12
+226,UK,143464,1918,1559,19506,GB,Europe,Northern Europe,120481,0.84,0.01,0.01,0.14
+2,Albania,678,394,4,27,AL,Europe,Southern Europe,253,0.37,0.58,0.01,0.04
+5,Andorra,731,344,17,40,AD,Europe,Southern Europe,330,0.45,0.47,0.02,0.05
+28,Bosnia and Herzegovina,1421,538,4,55,BA,Europe,Southern Europe,824,0.58,0.38,0.0,0.04
+51,Croatia,2009,982,19,51,HR,Europe,Southern Europe,957,0.48,0.49,0.01,0.03
+80,Gibraltar,133,131,0,0,GI,Europe,Southern Europe,2,0.02,0.98,0.0,0.0
+81,Greece,2490,577,48,130,GR,Europe,Southern Europe,1735,0.7,0.23,0.02,0.05
+104,Italy,192994,60498,2173,25969,IT,Europe,Southern Europe,104354,0.54,0.31,0.01,0.13
+130,Malta,447,223,2,4,MT,Europe,Southern Europe,218,0.49,0.5,0.0,0.01
+141,Montenegro,319,123,7,6,ME,Europe,Southern Europe,183,0.57,0.39,0.02,0.02
+158,North Macedonia,1326,337,14,57,MK,Europe,Southern Europe,918,0.69,0.25,0.01,0.04
+170,Portugal,22797,1228,188,854,PT,Europe,Southern Europe,20527,0.9,0.05,0.01,0.04
+184,San Marino,513,64,3,40,SM,Europe,Southern Europe,406,0.79,0.12,0.01,0.08
+188,Serbia,7483,1094,96,144,RS,Europe,Southern Europe,6149,0.82,0.15,0.01,0.02
+194,Slovenia,1373,211,23,80,SI,Europe,Southern Europe,1059,0.77,0.15,0.02,0.06
+201,Spain,219764,92355,7705,22524,ES,Europe,Southern Europe,97180,0.44,0.42,0.04,0.1
+232,Vatican City,9,2,0,0,VA,Europe,Southern Europe,7,0.78,0.22,0.0,0.0
+14,Austria,15071,11872,156,530,AT,Europe,Western Europe,2513,0.17,0.79,0.01,0.04
+21,Belgium,44293,10122,970,6679,BE,Europe,Western Europe,26522,0.6,0.23,0.02,0.15
+71,France,161530,43493,4870,22245,FR,Europe,Western Europe,90922,0.56,0.27,0.03,0.14
+78,Germany,154999,109800,2908,5760,DE,Europe,Western Europe,36531,0.24,0.71,0.02,0.04
+121,Liechtenstein,81,55,0,1,LI,Europe,Western Europe,25,0.31,0.68,0.0,0.01
+123,Luxembourg,3695,3007,25,85,LU,Europe,Western Europe,578,0.16,0.81,0.01,0.02
+139,Monaco,94,41,2,4,FR,Europe,Western Europe,47,0.5,0.44,0.02,0.04
+149,Netherlands,36535,3459,963,4289,NL,Europe,Western Europe,27824,0.76,0.09,0.03,0.12
+208,Switzerland,28677,21000,386,1589,CH,Europe,Western Europe,5702,0.2,0.73,0.01,0.06
+13,Australia,6765,5357,43,80,AU,Oceania,Australia and New Zealand,1285,0.19,0.79,0.01,0.01
+151,New Zealand,1461,1118,1,18,NZ,Oceania,Australia and New Zealand,324,0.22,0.77,0.0,0.01
+69,Fiji,18,10,0,0,FJ,Oceania,Melanesia,8,0.44,0.56,0.0,0.0
+150,New Caledonia,18,17,1,0,NC,Oceania,Melanesia,0,0.0,0.94,0.06,0.0
+164,Papua New Guinea,8,1,0,0,PG,Oceania,Melanesia,7,0.88,0.12,0.0,0.0
+85,Guam,32,0,0,1,GU,Oceania,Micronesia,31,0.97,0.0,0.0,0.03
+73,French Polynesia,57,41,1,0,PF,Oceania,Polynesia,15,0.26,0.72,0.02,0.0
